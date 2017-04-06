@@ -1,0 +1,3 @@
+rootProject.name = 'DehubReactNative'
+
+include ':app'
