@@ -1,4 +1,4 @@
 
-import runApp from './src/bootstrap';
+import { runApp } from './src/bootstrap';
 
 runApp();

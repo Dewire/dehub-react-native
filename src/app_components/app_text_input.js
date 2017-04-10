@@ -19,11 +19,13 @@ AppTextInput.propTypes = {
 
 const styles = {
   inputField: {
+    backgroundColor: 'white',
     borderColor: 'white',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 2,
     padding: 5,
-    height: 25,
+    height: 35,
+    fontSize: 14,
   },
 };
 

@@ -10,6 +10,11 @@
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "react/prop-types": 0,
     "react/require-default-props": 0,
-    "no-use-before-define": 0
+    "no-use-before-define": 0,
+    "global-require": 0,
+    "react/sort-comp": 0
+  },
+  "env": {
+    "browser": true
   }
 }
