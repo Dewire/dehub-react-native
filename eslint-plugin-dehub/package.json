@@ -1,0 +1,9 @@
+
+{
+  "name": "eslint-plugin-dehub",
+  "version": "0.0.1",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^3.19.0"
+  }
+}

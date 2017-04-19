@@ -1,13 +1,20 @@
 
-import { connect } from 'react-redux';
-import { isSpinActiveSelector } from '../../store/selectors';
+import appConnect from '../containers';
 import LoginComponent from './login_component';
 import { login, setState } from './login_actions';
-import { loggedInSelector, isLoginButtonEnabledSelector } from './login_selectors';
+import {
+  usernameSelector,
+  passwordSelector,
+  loggedInSelector,
+  isLoginButtonEnabledSelector,
+  isLoginSpinnerActiveSelector,
+} from './login_selectors';
 
 const mapStateToProps = state => ({
+  username: usernameSelector(state),
+  password: passwordSelector(state),
   loginButtonEnabled: isLoginButtonEnabledSelector(state),
-  showLoginSpinner: isSpinActiveSelector(state),
+  showLoginSpinner: isLoginSpinnerActiveSelector(state),
   isLoggedIn: loggedInSelector(state),
 });
 
@@ -17,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
   onLoginPress: () => dispatch(login()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+export default appConnect(mapStateToProps, mapDispatchToProps)(LoginComponent);

@@ -15,18 +15,24 @@ export default class LoginComponent extends Component {
 
   constructor(props) {
     super(props);
-    props.navigator.toggleNavBar({
-      to: 'hidden',
-      animated: false,
-    });
+    // eslint-disable-next-line dehub/no-props-navigator
+    props.setNavigator(props.navigator);
+    props.navigate(navigator =>
+      navigator.toggleNavBar({
+        to: 'hidden',
+        animated: false,
+      }),
+    );
   }
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.isLoggedIn && nextProps.isLoggedIn) {
-      this.props.navigator.push({
-        screen: GISTS_SCREEN,
-        title: 'Gists',
-      });
+      this.props.navigate(navigator =>
+        navigator.push({
+          screen: GISTS_SCREEN,
+          title: 'Gists',
+        }),
+      );
     }
   }
 
@@ -43,6 +49,7 @@ export default class LoginComponent extends Component {
           autoCapitalize="none"
           placeholder="Username"
           onChangeText={this.props.onUsernameChangeText}
+          value={this.props.username}
         />
         <AppTextInput
           style={[styles.textInput, { marginTop: 15, marginBottom: 30 }]}
@@ -51,6 +58,7 @@ export default class LoginComponent extends Component {
           autoCapitalize="none"
           placeholder="Password"
           onChangeText={this.props.onPasswordChangeText}
+          value={this.props.password}
         />
         <SpinnerReplacer isSpinning={this.props.showLoginSpinner}>
           <Button

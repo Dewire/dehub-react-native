@@ -4,7 +4,8 @@
     "react",
     "react-native",
     "jsx-a11y",
-    "import"
+    "import",
+    "dehub"
   ],
   "rules": {
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
@@ -12,7 +13,8 @@
     "react/require-default-props": 0,
     "no-use-before-define": 0,
     "global-require": 0,
-    "react/sort-comp": 0
+    "react/sort-comp": 0,
+    "dehub/no-props-navigator": "error"
   },
   "env": {
     "browser": true

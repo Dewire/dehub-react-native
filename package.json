@@ -8,10 +8,11 @@
   },
   "dependencies": {
     "base-64": "^0.1.0",
+    "eslint-plugin-react-native": "^2.3.2",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.43.3",
-    "react-native-navigation": "^2.0.0-experimental.296",
-    "react-redux": "^5.0.3",
+    "react-native-navigation": ">=2.0.0-experimental.303",
+    "react-redux": "^5.0.4",
     "redux": "^3.6.0",
     "redux-observable": "^0.14.1",
     "reselect": "^3.0.0",
@@ -25,7 +26,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "eslint-plugin-react-native": "^2.3.1",
+    "eslint-plugin-react-native": "^2.3.2",
+    "eslint-plugin-dehub": "file:./eslint-plugin-dehub",
     "jest": "19.0.2",
     "react-test-renderer": "16.0.0-alpha.6"
   },

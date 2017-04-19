@@ -1,5 +1,6 @@
 
 import { createSelector } from 'reselect';
+import { isSpinActiveSelector } from '../../store/selectors';
 
 export const loggedInSelector = state => state.login.loggedIn;
 export const passwordSelector = state => state.login.password;
@@ -12,4 +13,10 @@ export const isLoginButtonEnabledSelector = createSelector(
   (loggedIn, password, username) => (
     !loggedIn && password.length > 0 && username.length > 0
   ),
+);
+
+export const isLoginSpinnerActiveSelector = createSelector(
+  loggedInSelector,
+  isSpinActiveSelector,
+  (loggedIn, spinActive) => loggedIn || spinActive,
 );
