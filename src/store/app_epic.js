@@ -1,14 +1,5 @@
 
-import { combineEpics } from 'redux-observable';
-import { nop, NAVIGATE, LOGOUT } from './actions';
-
-const navigate = (action$, store) => (
-  action$.ofType(NAVIGATE)
-    .map((navigation) => {
-      navigation.payload(store.getState().app.navigator);
-      return nop();
-    })
-);
+import { nop, LOGOUT } from './actions';
 
 const logout = (action$, store) => (
   action$.ofType(LOGOUT)
@@ -20,4 +11,4 @@ const logout = (action$, store) => (
     })
 );
 
-export default combineEpics(navigate, logout);
+export default logout;

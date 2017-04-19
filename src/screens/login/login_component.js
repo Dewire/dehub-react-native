@@ -15,24 +15,19 @@ export default class LoginComponent extends Component {
 
   constructor(props) {
     super(props);
-    // eslint-disable-next-line dehub/no-props-navigator
     props.setNavigator(props.navigator);
-    props.navigate(navigator =>
-      navigator.toggleNavBar({
-        to: 'hidden',
-        animated: false,
-      }),
-    );
+    props.navigator.toggleNavBar({
+      to: 'hidden',
+      animated: false,
+    });
   }
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.isLoggedIn && nextProps.isLoggedIn) {
-      this.props.navigate(navigator =>
-        navigator.push({
-          screen: GISTS_SCREEN,
-          title: 'Gists',
-        }),
-      );
+      this.props.navigator.push({
+        screen: GISTS_SCREEN,
+        title: 'Gists',
+      });
     }
   }
 

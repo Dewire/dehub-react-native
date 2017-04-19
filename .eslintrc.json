@@ -13,8 +13,7 @@
     "react/require-default-props": 0,
     "no-use-before-define": 0,
     "global-require": 0,
-    "react/sort-comp": 0,
-    "dehub/no-props-navigator": "error"
+    "react/sort-comp": 0
   },
   "env": {
     "browser": true
