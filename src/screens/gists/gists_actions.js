@@ -1,0 +1,2 @@
+
+export const GISTS_FETCH_DATA = 'GISTS_FETCH_DATA';

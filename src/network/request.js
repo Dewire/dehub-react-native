@@ -3,10 +3,20 @@ import base64 from 'base-64';
 import { createSelector } from 'reselect';
 import { store } from '../bootstrap';
 
-export default function request(url, settings = {}) {
+const API_BASE = 'https://api.github.com';
+
+export default function request(path, settings = {}) {
   const def = defaultSettings();
+  const url = makeUrl(path);
   return { url, ...def, ...settings };
 }
+
+const makeUrl = (path) => {
+  if (path.match(/^https?/)) {
+    return path;
+  }
+  return `${API_BASE}/${path}`;
+};
 
 const defaultSettings = () => ({
   headers: defaultHeaders(),

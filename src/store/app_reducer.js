@@ -1,8 +1,6 @@
 
 import {
-  INCREMENT_SPIN_COUNT,
-  DECREMENT_SPIN_COUNT,
-  SET_NAVIGATOR,
+  INCREMENT_SPIN_COUNT, DECREMENT_SPIN_COUNT, SET_NAVIGATOR,
 } from './actions';
 
 const defaultState = {

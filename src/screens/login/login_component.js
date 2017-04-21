@@ -68,6 +68,10 @@ export default class LoginComponent extends Component {
   }
 }
 
+LoginComponent.navigatorStyle = {
+  navBarBackgroundColor: globalStyles.BAR_COLOR,
+};
+
 const styles = StyleSheet.create({
   mainContainer: {
     alignItems: 'center',
