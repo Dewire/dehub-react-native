@@ -1,5 +1,7 @@
 
 import { createSelector } from 'reselect';
+import languageColors from '../../styles/language_colors';
+import * as globalStyles from '../../styles/global';
 
 export const gistsSelector = state => state.fetches.gists || [];
 
@@ -12,14 +14,25 @@ export const sectionsSelector = createSelector(
       return acc;
     },
       [
-        { key: 'public', data: [] },
-        { key: 'private', data: [] },
+        { key: 'PUBLIC', data: [] },
+        { key: 'PRIVATE', data: [] },
       ],
     )
   ),
 );
 
 function decorateGist(gist) {
-  const first = Object.keys(gist.files)[0];
-  return { ...gist, key: gist.id, firstFile: first };
+  const firstFileName = Object.keys(gist.files)[0];
+  const firstFile = gist.files[firstFileName];
+  return {
+    ...gist,
+    key: gist.id,
+    firstFileName,
+    firstFile: { ...firstFile, color: itemColor(firstFile) },
+  };
+}
+
+function itemColor(file) {
+  const lang = languageColors[file.language];
+  return lang ? (lang.color || globalStyles.TEXT_COLOR) : globalStyles.TEXT_COLOR;
 }
