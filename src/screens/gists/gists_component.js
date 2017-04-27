@@ -7,6 +7,7 @@ import {
   SectionList,
   TouchableHighlight,
 } from 'react-native';
+import { VIEW_GIST_SCREEN } from '../screens';
 import SeparatorLine from '../../app_components/separator_line';
 import SectionHeader from '../../app_components/section_header';
 import { ListViewChevronRight } from '../../app_components/icons';
@@ -18,6 +19,7 @@ export default class GistsComponent extends Component {
     super(props);
     this.props.fetchData();
     this.onNavigatorEvent = this.onNavigatorEvent.bind(this);
+    this.renderGist = this.renderGist.bind(this);
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent);
   }
 
@@ -31,7 +33,7 @@ export default class GistsComponent extends Component {
     return (
       <View style={globalStyles.COMMON_STYLES.container}>
         <SectionList
-          renderItem={renderGist}
+          renderItem={this.renderGist}
           renderSectionHeader={({ section }) => <SectionHeader title={section.key} />}
           sections={this.props.sections}
           ItemSeparatorComponent={SeparatorLine}
@@ -39,31 +41,41 @@ export default class GistsComponent extends Component {
       </View>
     );
   }
+
+  renderGist({ item }) {
+    return (
+      <TouchableHighlight
+        underlayColor={globalStyles.MEDIUM_OVERLAY_COLOR}
+        onPress={() => this.onGistClick(item)}
+      >
+        <View style={styles.gistCell}>
+
+          <View>
+            <Text style={styles.fileText}>
+              {item.firstFileName}
+            </Text>
+            <Text style={[styles.languageText, { color: item.firstFile.color }]} >
+              {item.firstFile.language || ''}
+            </Text>
+          </View>
+
+          <View style={styles.rightColumn}>
+            <ListViewChevronRight />
+          </View>
+
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
+  onGistClick(item) {
+    this.props.navigator.push({
+      screen: VIEW_GIST_SCREEN,
+      title: item.firstFileName,
+      passProps: { gist: item },
+    });
+  }
 }
-
-const renderGist = ({ item }) => (
-  <TouchableHighlight
-    underlayColor={globalStyles.MEDIUM_OVERLAY_COLOR}
-    onPress={() => console.log('TESTST')}
-  >
-    <View style={styles.gistCell}>
-
-      <View>
-        <Text style={styles.fileText}>
-          {item.firstFileName}
-        </Text>
-        <Text style={[styles.languageText, { color: item.firstFile.color }]} >
-          {item.firstFile.language || ''}
-        </Text>
-      </View>
-
-      <View style={styles.rightColumn}>
-        <ListViewChevronRight />
-      </View>
-
-    </View>
-  </TouchableHighlight>
-);
 
 GistsComponent.navigatorButtons = {
   leftButtons: [

@@ -15,4 +15,8 @@ export default {
   fetchGists(options) {
     return ajaxObservable('gists', options);
   },
+
+  fetch(url, options) {
+    return ajaxObservable(url, options);
+  },
 };
