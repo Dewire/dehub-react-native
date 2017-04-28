@@ -1,16 +1,18 @@
 
 import api from '../../network/api';
-import { spin, error } from '../../observables/observables';
+import { track, error } from '../../observables/observables';
 import { VIEW_GIST_FETCH_DATA, VIEW_GIST_SET_STATE } from './view_gist_actions';
 
 export default action$ => (
   action$.ofType(VIEW_GIST_FETCH_DATA)
-    .switchMap(action => (
-      api.fetch(action.payload, { responseType: 'text' })
+    .switchMap((action) => {
+      const { rawUrl } = action.payload;
+      return api.fetch(rawUrl, { responseType: 'text' })
         .map(data => ({
           type: VIEW_GIST_SET_STATE,
-          payload: { url: action.payload, text: data.response },
+          payload: { rawUrl, text: data.response },
         }))
-        .let(error).let(spin)
-    ))
+        .let(error())
+        .let(track(action.type));
+    })
 );

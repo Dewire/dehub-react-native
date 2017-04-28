@@ -1,29 +1,37 @@
 
 import Rx from 'rxjs';
 import {
-  INCREMENT_SPIN_COUNT,
-  DECREMENT_SPIN_COUNT,
+  TRACK_REQUEST_ACTIVE,
+  TRACK_REQUEST_INACTIVE,
   ERROR,
 }
 from '../store/actions';
 
-export function spin(source) {
-  return Rx.Observable.concat(
-    Rx.Observable.of({
-      type: INCREMENT_SPIN_COUNT,
-    }),
-    source,
-    Rx.Observable.of({
-      type: DECREMENT_SPIN_COUNT,
-    }),
-  );
-}
+export const track = (actionType, metadata = {}, enabled = true) => (
+  (source) => {
+    if (!enabled) return source;
+    return Rx.Observable.concat(
+      Rx.Observable.of({
+        type: TRACK_REQUEST_ACTIVE,
+        payload: { actionType, metadata },
+      }),
+      source,
+      Rx.Observable.of({
+        type: TRACK_REQUEST_INACTIVE,
+        payload: { actionType },
+      }),
+    );
+  }
+);
 
-export function error(source) {
-  return source.catch(e => (
-    Rx.Observable.of({
-      type: ERROR,
-      payload: e,
-    })
-  ));
-}
+export const error = (enabled = true) => (
+  (source) => {
+    if (!enabled) return source;
+    return source.catch(e => (
+      Rx.Observable.of({
+        type: ERROR,
+        payload: e,
+      })
+    ));
+  }
+);

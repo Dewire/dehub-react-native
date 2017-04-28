@@ -1,14 +1,15 @@
 
 import api from '../../network/api';
 import { fetchComplete } from '../../store/actions';
-import { spin, error } from '../../observables/observables';
 import { GISTS_FETCH_DATA } from './gists_actions';
+import { track, error } from '../../observables/observables';
 
 export default action$ => (
   action$.ofType(GISTS_FETCH_DATA)
-    .switchMap(() => (
-      api.fetchGists()
+    .switchMap(action => (
+      api.fetchGists({ noCache: true })
         .map(data => fetchComplete('gists', data))
-        .let(error).let(spin)
+        .let(error())
+        .let(track(action.type, action.payload))
     ))
 );

@@ -1,12 +1,12 @@
 
 import React, { Component } from 'react';
 import {
-  View,
   ScrollView,
   Text,
   StyleSheet,
 } from 'react-native';
 import * as globalStyles from '../../styles/global';
+import Container from '../../app_components/container';
 
 export default class ViewGistComponent extends Component {
 
@@ -16,20 +16,16 @@ export default class ViewGistComponent extends Component {
   }
 
   render() {
-    const gistText = this.props.gistFetch.url === this.props.gist.firstFile.raw_url
-      ? this.props.gistFetch.text
-      : '';
-
     return (
-      <View style={globalStyles.COMMON_STYLES.container}>
+      <Container showLoading={this.props.showLoading}>
         <ScrollView>
           <ScrollView horizontal>
             <Text style={styles.text}>
-              {gistText}
+              {this.props.gistText}
             </Text>
           </ScrollView>
         </ScrollView>
-      </View>
+      </Container>
     );
   }
 }

@@ -1,14 +1,21 @@
 
 import appConnect from '../containers';
 import ViewGistComponent from './view_gist_component';
-import { fetchGist } from './view_gist_actions';
+import { fetchData } from './view_gist_actions';
+import {
+  selectedGistSelector,
+  gistTextSelector,
+  showLoadingSelector,
+} from './view_gist_selectors';
 
 const mapStateToProps = state => ({
-  gistFetch: state.viewGist.gistFetch,
+  gist: selectedGistSelector(state),
+  gistText: gistTextSelector(state),
+  showLoading: showLoadingSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: gist => dispatch(fetchGist(gist.firstFile.raw_url)),
+  fetchData: gist => dispatch(fetchData(gist.firstFile.raw_url)),
 });
 
 export default appConnect(mapStateToProps, mapDispatchToProps)(ViewGistComponent);

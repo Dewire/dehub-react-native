@@ -2,10 +2,7 @@
 import { VIEW_GIST_SET_STATE } from './view_gist_actions';
 
 const defaultState = {
-  gistFetch: {
-    url: '',
-    text: '',
-  },
+  gistFetch: undefined,
 };
 
 export default (state = defaultState, action = {}) => {

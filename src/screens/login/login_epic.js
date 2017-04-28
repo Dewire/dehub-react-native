@@ -1,7 +1,7 @@
 
 import api from '../../network/api';
-import { spin, error } from '../../observables/observables';
 import { LOGIN, LOGIN_SET_STATE } from './login_actions';
+import { track, error } from '../../observables/observables';
 
 export default (action$, store) => (
   action$.ofType(LOGIN)
@@ -12,6 +12,7 @@ export default (action$, store) => (
           type: LOGIN_SET_STATE,
           payload: { loggedIn: true },
         }))
-        .let(error).let(spin)
+        .let(error())
+        .let(track(LOGIN))
     ))
 );

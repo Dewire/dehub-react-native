@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import { VIEW_GIST_SCREEN } from '../screens';
+import Container from '../../app_components/container';
 import SeparatorLine from '../../app_components/separator_line';
 import SectionHeader from '../../app_components/section_header';
 import { ListViewChevronRight } from '../../app_components/icons';
@@ -31,14 +32,16 @@ export default class GistsComponent extends Component {
 
   render() {
     return (
-      <View style={globalStyles.COMMON_STYLES.container}>
+      <Container showLoading={this.props.showLoading}>
         <SectionList
           renderItem={this.renderGist}
           renderSectionHeader={({ section }) => <SectionHeader title={section.key} />}
           sections={this.props.sections}
           ItemSeparatorComponent={SeparatorLine}
+          onRefresh={() => this.props.fetchData(true)}
+          refreshing={this.props.refreshing}
         />
-      </View>
+      </Container>
     );
   }
 
@@ -46,7 +49,7 @@ export default class GistsComponent extends Component {
     return (
       <TouchableHighlight
         underlayColor={globalStyles.MEDIUM_OVERLAY_COLOR}
-        onPress={() => this.onGistClick(item)}
+        onPress={() => this.onGistTap(item)}
       >
         <View style={styles.gistCell}>
 
@@ -68,11 +71,11 @@ export default class GistsComponent extends Component {
     );
   }
 
-  onGistClick(item) {
+  onGistTap(gist) {
+    this.props.onGistTap(gist);
     this.props.navigator.push({
       screen: VIEW_GIST_SCREEN,
-      title: item.firstFileName,
-      passProps: { gist: item },
+      title: gist.firstFileName,
     });
   }
 }
