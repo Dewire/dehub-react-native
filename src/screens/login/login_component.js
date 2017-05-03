@@ -10,6 +10,7 @@ import { GISTS_SCREEN } from '../screens';
 import * as globalStyles from '../../styles/global';
 import AppTextInput from '../../app_components/app_text_input';
 import SpinnerReplacer from '../../app_components/spinner_replacer';
+import { isIOS } from '../../util/platform';
 
 export default class LoginComponent extends Component {
 
@@ -24,7 +25,8 @@ export default class LoginComponent extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.isLoggedIn && nextProps.isLoggedIn) {
-      this.props.navigator.push({
+      const command = isIOS ? 'push' : 'resetTo';
+      this.props.navigator[command]({
         screen: GISTS_SCREEN,
         title: 'Gists',
       });
@@ -60,7 +62,7 @@ export default class LoginComponent extends Component {
             disabled={!this.props.loginButtonEnabled}
             onPress={this.props.onLoginPress}
             title="Login"
-            color="white"
+            color={isIOS ? 'white' : 'gray'}
           />
         </SpinnerReplacer>
       </View>
@@ -78,7 +80,6 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   textInput: {
-    marginLeft: 50,
-    marginRight: 50,
+    width: 175,
   },
 });

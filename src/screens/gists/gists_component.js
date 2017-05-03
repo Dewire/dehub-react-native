@@ -13,6 +13,7 @@ import SeparatorLine from '../../app_components/separator_line';
 import SectionHeader from '../../app_components/section_header';
 import { ListViewChevronRight } from '../../app_components/icons';
 import * as globalStyles from '../../styles/global';
+import { isIOS } from '../../util/platform';
 
 export default class GistsComponent extends Component {
 
@@ -80,8 +81,9 @@ export default class GistsComponent extends Component {
   }
 }
 
+// TODO: leftButtons doesn't work on Android.
 GistsComponent.navigatorButtons = {
-  leftButtons: [
+  [isIOS ? 'leftButtons' : 'rightButtons']: [
     {
       title: 'Logout',
       id: 'logout',

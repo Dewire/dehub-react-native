@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import * as globalStyles from '../../styles/global';
 import Container from '../../app_components/container';
+import { isIOS } from '../../util/platform';
 
 export default class ViewGistComponent extends Component {
 
@@ -33,7 +34,15 @@ export default class ViewGistComponent extends Component {
 const styles = StyleSheet.create({
   text: {
     color: globalStyles.TEXT_COLOR,
-    fontFamily: 'Menlo',
+    fontFamily: isIOS ? 'Menlo' : 'monospace',
     margin: 10,
   },
 });
+
+// TODO: the documentation says this should be remembered across pushes (the same is set in
+// gists_component) but it is only rememberd on iOS.
+ViewGistComponent.navigatorStyle = {
+  navBarBackgroundColor: globalStyles.BAR_COLOR,
+  navBarButtonColor: globalStyles.LINK_COLOR,
+  navBarTextColor: 'white',
+};
