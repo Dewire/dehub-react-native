@@ -1,10 +1,9 @@
 
-import api from '../../network/api';
 import { fetchComplete } from '../../store/actions';
 import { GISTS_FETCH_DATA } from './gists_actions';
 import { track, error } from '../../observables/observables';
 
-export default action$ => (
+export default (action$, store, { api }) => (
   action$.ofType(GISTS_FETCH_DATA)
     .switchMap(action => (
       api.fetchGists({ noCache: true })

@@ -1,4 +1,4 @@
-
+/* eslint immutable/no-mutation: 2 */
 import { LOGOUT } from '../../store/actions';
 import { LOGIN_SET_STATE } from './login_actions';
 

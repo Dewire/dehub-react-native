@@ -1,4 +1,4 @@
-
+/* eslint immutable/no-mutation: 2 */
 import {
   TRACK_REQUEST_ACTIVE, TRACK_REQUEST_INACTIVE, SET_NAVIGATOR,
 } from './actions';

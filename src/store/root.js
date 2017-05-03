@@ -10,6 +10,7 @@ import fetches from './fetches_reducer';
 import login from '../screens/login/login_reducer';
 import gists from '../screens/gists/gists_reducer';
 import viewGist from '../screens/view_gist/view_gist_reducer';
+import api from '../network/api';
 
 export const rootEpic = combineEpics(
   appEpic,
@@ -25,3 +26,7 @@ export const rootReducer = combineReducers({
   viewGist,
   gists,
 });
+
+export const epicDependencies = {
+  api,
+};

@@ -1,4 +1,4 @@
-
+/* eslint immutable/no-mutation: 2 */
 import { VIEW_GIST_SET_STATE } from './view_gist_actions';
 
 const defaultState = {

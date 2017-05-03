@@ -1,4 +1,4 @@
-
+/* eslint immutable/no-mutation: 2 */
 import {
   FETCH_COMPLETE,
 } from './actions';

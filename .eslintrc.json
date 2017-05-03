@@ -5,10 +5,11 @@
     "react-native",
     "jsx-a11y",
     "import",
+    "immutable",
     "dehub"
   ],
   "rules": {
-    "valid-jsdoc": 1,
+    "valid-jsdoc": 2,
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "react/prop-types": 0,
     "react/require-default-props": 0,

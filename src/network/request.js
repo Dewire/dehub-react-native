@@ -43,7 +43,7 @@ const API_BASE = 'https://api.github.com';
  *   noCache (Boolean): If this is set to true, a "Cache-Control: no-cache" header is added to the
  *                      request headers.
  *
- * @returns {type} a request object that can be used with the RxJS ajax() function.
+ * @returns {object} a request object that can be used with the RxJS ajax() function.
  */
 export default function request(path, settings = {}) {
   const url = makeUrl(path);

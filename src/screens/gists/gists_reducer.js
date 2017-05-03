@@ -1,4 +1,4 @@
-
+/* eslint immutable/no-mutation: 2 */
 import { GISTS_SET_STATE } from './gists_actions';
 
 const defaultState = {
