@@ -47,6 +47,7 @@ export default class LoginComponent extends Component {
           placeholder="Username"
           onChangeText={this.props.onUsernameChangeText}
           value={this.props.username}
+          testID="usernameInput"
         />
         <AppTextInput
           style={[styles.textInput, { marginTop: 15, marginBottom: 30 }]}
@@ -56,6 +57,7 @@ export default class LoginComponent extends Component {
           placeholder="Password"
           onChangeText={this.props.onPasswordChangeText}
           value={this.props.password}
+          testID="passwordInput"
         />
         <SpinnerReplacer isSpinning={this.props.showLoginSpinner}>
           <Button
@@ -63,6 +65,7 @@ export default class LoginComponent extends Component {
             onPress={this.props.onLoginPress}
             title="Login"
             color={isIOS ? 'white' : 'gray'}
+            testID="loginButton"
           />
         </SpinnerReplacer>
       </View>

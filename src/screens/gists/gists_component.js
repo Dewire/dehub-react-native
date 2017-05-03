@@ -33,7 +33,7 @@ export default class GistsComponent extends Component {
 
   render() {
     return (
-      <Container showLoading={this.props.showLoading}>
+      <Container showLoading={this.props.showLoading} testID="gistsContainer">
         <SectionList
           renderItem={this.renderGist}
           renderSectionHeader={({ section }) => <SectionHeader title={section.key} />}

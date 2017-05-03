@@ -22,6 +22,7 @@
   "devDependencies": {
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
+    "detox": "^5.0.6",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-dehub": "file:./eslint-plugin-dehub",
@@ -31,9 +32,20 @@
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-react-native": "^2.3.2",
     "jest": "^19.0.2",
+    "mocha": "^3.3.0",
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/DehubReactNative.app",
+        "build": "xcodebuild -project ios/DehubReactNative.xcodeproj -scheme DehubReactNative -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 7"
+      }
+    }
   }
 }

@@ -7,8 +7,8 @@ import {
  } from 'react-native';
 import * as globalStyles from '../styles/global';
 
-const Container = ({ children, style, showLoading = false }) => (
-  <View style={[globalStyles.COMMON_STYLES.container, style]}>
+const Container = ({ children, style, showLoading = false, ...rest }) => (
+  <View style={[globalStyles.COMMON_STYLES.container, style]} {...rest}>
     {(showLoading ? (
       <View style={styles.indicatorContainer}>
         <ActivityIndicator size="large" />
