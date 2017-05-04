@@ -4,12 +4,7 @@ import { ActionsObservable } from 'redux-observable';
 import { nop } from '../../../src/store/actions';
 import loginEpic from '../../../src/screens/login/login_epic';
 import { login, LOGIN_SET_STATE } from '../../../src/screens/login/login_actions';
-
-const mockStore = state => ({
-  getState() {
-    return state;
-  },
-});
+import { mockStore } from '../../test_util';
 
 const store = mockStore({
   login: {

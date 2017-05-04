@@ -36,7 +36,8 @@
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "testRegex": ".+test\\.js"
   },
   "detox": {
     "configurations": {
