@@ -20,8 +20,8 @@ describe('Example', () => {
 
   it('should show the gists page on a successful login', async () => {
     await device.reloadReactNative();
-    await element(by.id('usernameInput')).replaceText('kl');
-    await element(by.id('passwordInput')).replaceText('1commitedmypassword');
+    await element(by.id('usernameInput')).replaceText(process.env.DEHUB_USERNAME);
+    await element(by.id('passwordInput')).replaceText(process.env.DEHUB_PASSWORD);
     await element(by.id('loginButton')).tap();
     await expect(element(by.id('gistsContainer'))).toBeVisible();
   });
