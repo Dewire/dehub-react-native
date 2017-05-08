@@ -1,24 +1,20 @@
 /* eslint-disable no-undef */
 import 'rxjs/Rx';
 import { ActionsObservable } from 'redux-observable';
-import { logout } from '../../src/store/actions';
-import logoutEpic from '../../src/store/app_epic';
+import { logout } from '../../src/base/actions';
+import logoutEpic from '../../src/base/app_epic';
 import { isIOS } from '../../src/util/platform';
-import { mockStore } from '../test_util';
 
 let action$;
 let store;
 
+const mockNavigator = {
+  popToRoot: jest.fn(),
+  resetTo: jest.fn(),
+};
+
 beforeEach(() => {
-  action$ = ActionsObservable.of(logout());
-  store = mockStore({
-    app: {
-      navigator: {
-        popToRoot: jest.fn(),
-        resetTo: jest.fn(),
-      },
-    },
-  });
+  action$ = ActionsObservable.of(logout(mockNavigator));
 });
 
 describe('app epic', () => {
@@ -27,9 +23,9 @@ describe('app epic', () => {
       logoutEpic(action$, store)
         .subscribe(() => {
           if (isIOS) {
-            expect(store.getState().app.navigator.popToRoot.mock.calls.length).toBe(1);
+            expect(mockNavigator.popToRoot.mock.calls.length).toBe(1);
           } else {
-            expect(store.getState().app.navigator.resetTo.mock.calls.length).toBe(1);
+            expect(mockNavigator.resetTo.mock.calls.length).toBe(1);
           }
         });
     });

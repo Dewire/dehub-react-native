@@ -1,6 +1,6 @@
 
 import { createSelector } from 'reselect';
-import { requestActiveSelector } from '../../store/selectors';
+import { requestActiveSelector } from '../../base/selectors';
 import { VIEW_GIST_FETCH_DATA } from './view_gist_actions';
 
 export const selectedGistSelector = state => state.gists.tappedGist;

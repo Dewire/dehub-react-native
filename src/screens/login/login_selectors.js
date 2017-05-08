@@ -1,6 +1,6 @@
 
 import { createSelector } from 'reselect';
-import { requestActiveSelector } from '../../store/selectors';
+import { requestActiveSelector } from '../../base/selectors';
 import { LOGIN } from './login_actions';
 
 export const loggedInSelector = state => state.login.loggedIn;

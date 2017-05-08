@@ -16,7 +16,6 @@ export default class LoginComponent extends Component {
 
   constructor(props) {
     super(props);
-    props.setNavigator(props.navigator);
     props.navigator.toggleNavBar({
       to: 'hidden',
       animated: false,

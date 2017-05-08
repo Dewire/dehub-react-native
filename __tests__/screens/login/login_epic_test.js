@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { Observable } from 'rxjs/Observable';
 import { ActionsObservable } from 'redux-observable';
-import { nop } from '../../../src/store/actions';
+import { nop } from '../../../src/base/actions';
 import loginEpic from '../../../src/screens/login/login_epic';
 import { login, LOGIN_SET_STATE } from '../../../src/screens/login/login_actions';
 import { mockStore } from '../../test_util';

@@ -1,6 +1,6 @@
 /* eslint immutable/no-mutation: 2 */
 import {
-  TRACK_REQUEST_ACTIVE, TRACK_REQUEST_INACTIVE, SET_NAVIGATOR,
+  TRACK_REQUEST_ACTIVE, TRACK_REQUEST_INACTIVE,
 } from './actions';
 
 const defaultState = {
@@ -13,8 +13,6 @@ export default (state = defaultState, action = {}) => {
       return setTracking(state, action.payload, true);
     case TRACK_REQUEST_INACTIVE:
       return setTracking(state, action.payload, false);
-    case SET_NAVIGATOR:
-      return { ...state, navigator: action.payload };
     default:
       return state;
   }

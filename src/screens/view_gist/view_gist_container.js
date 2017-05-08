@@ -1,5 +1,5 @@
 
-import appConnect from '../containers';
+import { connect } from 'react-redux';
 import ViewGistComponent from './view_gist_component';
 import { fetchData } from './view_gist_actions';
 import {
@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch => ({
   fetchData: gist => dispatch(fetchData(gist.firstFile.raw_url)),
 });
 
-export default appConnect(mapStateToProps, mapDispatchToProps)(ViewGistComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ViewGistComponent);

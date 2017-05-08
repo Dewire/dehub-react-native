@@ -1,5 +1,5 @@
 
-import appConnect from '../containers';
+import { connect } from 'react-redux';
 import LoginComponent from './login_component';
 import { login, setState } from './login_actions';
 import {
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
   onLoginPress: () => dispatch(login()),
 });
 
-export default appConnect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);

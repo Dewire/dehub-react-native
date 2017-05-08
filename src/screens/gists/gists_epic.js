@@ -1,5 +1,5 @@
 
-import { fetchComplete } from '../../store/actions';
+import { fetchComplete } from '../../base/actions';
 import { GISTS_FETCH_DATA } from './gists_actions';
 import { track, error } from '../../observables/observables';
 

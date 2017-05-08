@@ -1,11 +1,11 @@
 
-import appConnect from '../containers';
+import { connect } from 'react-redux';
 import GistsComponent from './gists_component';
-import { logout } from '../../store/actions';
+import { logout } from '../../base/actions';
 import {
   backgroundRequestActiveWithNoFetchDataSelector,
   refreshRequestActiveSelector,
-} from '../../store/selectors';
+} from '../../base/selectors';
 import { GISTS_FETCH_DATA, setState, fetchData } from './gists_actions';
 import { sectionsSelector } from './gists_selectors';
 
@@ -16,11 +16,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogoutPressed: () => dispatch(logout()),
+  onLogoutPressed: navigator => dispatch(logout(navigator)),
   fetchData: (isRefresh = false) => dispatch(fetchData(isRefresh)),
   onGistTap: gist => dispatch(
     setState({ tappedGist: gist }),
   ),
 });
 
-export default appConnect(mapStateToProps, mapDispatchToProps)(GistsComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(GistsComponent);

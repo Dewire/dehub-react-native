@@ -27,7 +27,7 @@ export default class GistsComponent extends Component {
 
   onNavigatorEvent(event) {
     if (event.id === 'logout') {
-      this.props.onLogoutPressed();
+      this.props.onLogoutPressed(this.props.navigator);
     }
   }
 

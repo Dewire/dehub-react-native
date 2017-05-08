@@ -5,7 +5,7 @@ import {
   TRACK_REQUEST_INACTIVE,
   ERROR,
 }
-from '../store/actions';
+from '../base/actions';
 
 export const track = (actionType, metadata = {}, enabled = true) => (
   (source) => {
@@ -30,7 +30,7 @@ export const error = (enabled = true) => (
     return source.catch(e => (
       Rx.Observable.of({
         type: ERROR,
-        payload: e,
+        payload: { error: e },
       })
     ));
   }
