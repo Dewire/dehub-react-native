@@ -3,16 +3,19 @@ import { Navigation } from 'react-native-navigation';
 import LoginContainer from './login/login_container';
 import GistsContainer from './gists/gists_container';
 import ViewGistContainer from './view_gist/view_gist_container';
-
-export const LOGIN_SCREEN = 'DeHub.LoginScreen';
-export const GISTS_SCREEN = 'DeHub.GistsScreen';
-export const VIEW_GIST_SCREEN = 'DeHub.ViewGistScreen';
+// We need to have the screen identifiers in a separate file so they can be imported in the
+// unit tests without importing React components.
+import {
+  LOGIN_SCREEN,
+  GISTS_SCREEN,
+  VIEW_GIST_SCREEN,
+} from './screenIdentifiers';
 
 function storeRegister(store, provider) {
   return (id, component) => Navigation.registerComponent(id, component, store, provider);
 }
 
-export function registerScreens(store, provider) {
+export default function registerScreens(store, provider) {
   const register = storeRegister(store, provider);
 
   register(LOGIN_SCREEN, () => LoginContainer);

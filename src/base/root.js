@@ -11,6 +11,7 @@ import login from '../screens/login/login_reducer';
 import gists from '../screens/gists/gists_reducer';
 import viewGist from '../screens/view_gist/view_gist_reducer';
 import api from '../network/api';
+import isIOS from '../util/platform';
 import { LOGOUT } from './actions';
 
 export const rootEpic = combineEpics(
@@ -37,4 +38,5 @@ export const rootReducer = (state, action) => {
 
 export const epicDependencies = {
   api,
+  isIOS,
 };

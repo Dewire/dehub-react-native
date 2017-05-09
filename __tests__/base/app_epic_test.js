@@ -3,30 +3,34 @@ import 'rxjs/Rx';
 import { ActionsObservable } from 'redux-observable';
 import { logout } from '../../src/base/actions';
 import logoutEpic from '../../src/base/app_epic';
-import { isIOS } from '../../src/util/platform';
 
 let action$;
 let store;
-
-const mockNavigator = {
-  popToRoot: jest.fn(),
-  resetTo: jest.fn(),
-};
+let mockNavigator;
 
 beforeEach(() => {
+  mockNavigator = {
+    popToRoot: jest.fn(),
+    resetTo: jest.fn(),
+  };
   action$ = ActionsObservable.of(logout(mockNavigator));
 });
 
 describe('app epic', () => {
   describe('on logout action', () => {
-    it('should call popToRoot on iOS and resetTo on Android and go to the login screen', () => {
-      logoutEpic(action$, store)
+    it('should call popToRoot on iOS', () => {
+      logoutEpic(action$, store, { isIOS: true })
         .subscribe(() => {
-          if (isIOS) {
-            expect(mockNavigator.popToRoot.mock.calls.length).toBe(1);
-          } else {
-            expect(mockNavigator.resetTo.mock.calls.length).toBe(1);
-          }
+          expect(mockNavigator.popToRoot.mock.calls.length).toBe(1);
+          expect(mockNavigator.resetTo.mock.calls.length).toBe(0);
+        });
+    });
+
+    it('should call resetTo on Android', () => {
+      logoutEpic(action$, store, { isIOS: false })
+        .subscribe(() => {
+          expect(mockNavigator.popToRoot.mock.calls.length).toBe(0);
+          expect(mockNavigator.resetTo.mock.calls.length).toBe(1);
         });
     });
   });

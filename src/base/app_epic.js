@@ -1,9 +1,8 @@
 
 import { nop, LOGOUT } from './actions';
-import { LOGIN_SCREEN } from '../screens/screens';
-import { isIOS } from '../util/platform';
+import { LOGIN_SCREEN } from '../screens/screenIdentifiers';
 
-const logout = action$ => (
+const logout = (action$, store, { isIOS }) => (
   action$.ofType(LOGOUT)
     .map((action) => {
       // On iOS, resetting the root view controller cases a visual glitch that does not happen

@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Button,
 } from 'react-native';
-import { GISTS_SCREEN } from '../screens';
 import * as globalStyles from '../../styles/global';
 import AppTextInput from '../../app_components/app_text_input';
 import SpinnerReplacer from '../../app_components/spinner_replacer';
@@ -23,13 +22,11 @@ export default class LoginComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.isLoggedIn && nextProps.isLoggedIn) {
-      const command = isIOS ? 'push' : 'resetTo';
-      this.props.navigator[command]({
-        screen: GISTS_SCREEN,
-        title: 'Gists',
-      });
-    }
+    this.props.navigateToGists({
+      currentProps: this.props,
+      nextProps,
+      navigator: this.props.navigator,
+    });
   }
 
   render() {

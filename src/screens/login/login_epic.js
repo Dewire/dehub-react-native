@@ -1,8 +1,11 @@
 
-import { LOGIN, LOGIN_SET_STATE } from './login_actions';
+import { combineEpics } from 'redux-observable';
+import { nop } from '../../base/actions';
+import { LOGIN, LOGIN_SET_STATE, LOGIN_NAVIGATE_TO_GISTS } from './login_actions';
+import { GISTS_SCREEN } from '../screenIdentifiers';
 import { track, error } from '../../observables/observables';
 
-export default (action$, store, { api }) => (
+const login = (action$, store, { api }) => (
   action$.ofType(LOGIN)
     .throttleTime(1000)
     .switchMap(() => (
@@ -15,3 +18,20 @@ export default (action$, store, { api }) => (
         .let(track(LOGIN))
     ))
 );
+
+const navigation = (action$, { isIOS }) => (
+  action$.ofType(LOGIN_NAVIGATE_TO_GISTS)
+    .map((action) => {
+      const { currentProps, nextProps, navigator } = action.payload;
+      if (!currentProps.isLoggedIn && nextProps.isLoggedIn) {
+        const command = isIOS ? 'push' : 'resetTo';
+        navigator[command]({
+          screen: GISTS_SCREEN,
+          title: 'Gists',
+        });
+      }
+      return nop();
+    })
+);
+
+export default combineEpics(login, navigation);

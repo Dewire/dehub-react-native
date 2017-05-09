@@ -7,13 +7,16 @@ import {
   SectionList,
   TouchableHighlight,
 } from 'react-native';
-import { VIEW_GIST_SCREEN } from '../screens';
+import Icon from 'react-native-vector-icons/Ionicons';
 import Container from '../../app_components/container';
 import SeparatorLine from '../../app_components/separator_line';
 import SectionHeader from '../../app_components/section_header';
-import { ListViewChevronRight } from '../../app_components/icons';
+import { ListViewChevronRightIcon } from '../../app_components/icons';
 import * as globalStyles from '../../styles/global';
 import { isIOS } from '../../util/platform';
+
+const EVENT_LOGOUT = 'logout';
+const EVENT_NEW_GIST = 'new_gist';
 
 export default class GistsComponent extends Component {
 
@@ -26,8 +29,10 @@ export default class GistsComponent extends Component {
   }
 
   onNavigatorEvent(event) {
-    if (event.id === 'logout') {
-      this.props.onLogoutPressed(this.props.navigator);
+    if (event.id === EVENT_LOGOUT) {
+      this.props.onLogoutTapped(this.props.navigator);
+    } else if (event.id === EVENT_NEW_GIST) {
+      this.props.onNewGistTapped(this.props.navigator);
     }
   }
 
@@ -50,7 +55,7 @@ export default class GistsComponent extends Component {
     return (
       <TouchableHighlight
         underlayColor={globalStyles.MEDIUM_OVERLAY_COLOR}
-        onPress={() => this.onGistTap(item)}
+        onPress={() => this.props.onGistTap(item, this.props.navigator)}
       >
         <View style={styles.gistCell}>
 
@@ -64,32 +69,48 @@ export default class GistsComponent extends Component {
           </View>
 
           <View style={styles.rightColumn}>
-            <ListViewChevronRight />
+            <ListViewChevronRightIcon />
           </View>
 
         </View>
       </TouchableHighlight>
     );
   }
-
-  onGistTap(gist) {
-    this.props.onGistTap(gist);
-    this.props.navigator.push({
-      screen: VIEW_GIST_SCREEN,
-      title: gist.firstFileName,
-    });
-  }
 }
 
-// TODO: leftButtons doesn't work on Android.
+const leftButtons = [];
+const rightButtons = [];
+
+if (isIOS) {
+  leftButtons.push({
+    title: 'Logout',
+    id: EVENT_LOGOUT,
+  });
+  rightButtons.push({
+    title: 'New Gist',
+    id: EVENT_NEW_GIST,
+  });
+} else {
+  rightButtons.push({
+    title: 'Logout',
+    id: EVENT_LOGOUT,
+  });
+}
+
 GistsComponent.navigatorButtons = {
-  [isIOS ? 'leftButtons' : 'rightButtons']: [
-    {
-      title: 'Logout',
-      id: 'logout',
-    },
-  ],
+  leftButtons,
+  rightButtons,
 };
+
+if (!isIOS) {
+  Icon.getImageSource('ios-add', 24, 'white').then((source) => {
+    GistsComponent.navigatorButtons.fab = {
+      collapsedId: EVENT_NEW_GIST,
+      collapsedIcon: source,
+      backgroundColor: '#607D8B',
+    };
+  });
+}
 
 GistsComponent.navigatorStyle = {
   navBarBackgroundColor: globalStyles.BAR_COLOR,

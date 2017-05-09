@@ -6,7 +6,7 @@ import {
   backgroundRequestActiveWithNoFetchDataSelector,
   refreshRequestActiveSelector,
 } from '../../base/selectors';
-import { GISTS_FETCH_DATA, setState, fetchData } from './gists_actions';
+import { GISTS_FETCH_DATA, setState, fetchData, navigateToViewGist } from './gists_actions';
 import { sectionsSelector } from './gists_selectors';
 
 const mapStateToProps = state => ({
@@ -16,11 +16,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogoutPressed: navigator => dispatch(logout(navigator)),
+  onLogoutTapped: navigator => dispatch(logout(navigator)),
   fetchData: (isRefresh = false) => dispatch(fetchData(isRefresh)),
-  onGistTap: gist => dispatch(
-    setState({ tappedGist: gist }),
-  ),
+  onGistTap: (gist, navigator) => {
+    dispatch(setState({ tappedGist: gist }));
+    dispatch(navigateToViewGist({ navigator, title: gist.firstFileName }));
+  },
+  onNewGistTapped: () => { },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GistsComponent);

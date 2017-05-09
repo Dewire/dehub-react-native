@@ -7,6 +7,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 import com.reactnativenavigation.NavigationApplication;
 
@@ -24,8 +25,8 @@ public class MainApplication extends NavigationApplication {
   @Override
   public List<ReactPackage> createAdditionalReactPackages() {
     // Add additional packages you require here
-    return Arrays.asList(
-            //new InsertPackageName() // For example: new VectorIconsPackage()
+    return Arrays.<ReactPackage>asList(
+        new VectorIconsPackage()
     );
     // No need to add RnnPackage and MainReactPackage
     // Simply return null if you do not have additional packages:
