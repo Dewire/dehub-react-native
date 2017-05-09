@@ -1,6 +1,6 @@
 
 import { createSelector } from 'reselect';
-import { requestActiveSelector } from '../../base/selectors';
+import { isActiveRequestSelector } from '../../base/selectors';
 import { LOGIN } from './login_actions';
 
 export const loggedInSelector = state => state.login.loggedIn;
@@ -18,6 +18,6 @@ export const isLoginButtonEnabledSelector = createSelector(
 
 export const isLoginSpinnerActiveSelector = createSelector(
   loggedInSelector,
-  requestActiveSelector(LOGIN),
-  (loggedIn, loginActive) => !!(loggedIn || loginActive),
+  isActiveRequestSelector(LOGIN),
+  (loggedIn, loginActive) => loggedIn || loginActive,
 );

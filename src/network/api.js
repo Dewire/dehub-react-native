@@ -19,4 +19,12 @@ export default {
   fetch(url, options) {
     return ajaxObservable(url, options);
   },
+
+  createGist(gistObject, options) {
+    return ajaxObservable('gists', {
+      method: 'POST',
+      body: JSON.stringify(gistObject),
+      ...options,
+    });
+  },
 };

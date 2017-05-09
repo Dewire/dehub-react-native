@@ -1,19 +1,26 @@
 
 import { createSelector } from 'reselect';
 
-export const requestTrackingSelector = state => state.app.requestTrackings;
+export const requestTrackingsSelector = state => state.app.requestTrackings;
 
-export const requestActiveSelector = type => (
+export const requestTrackingSelector = type => (
   createSelector(
-    requestTrackingSelector,
+    requestTrackingsSelector,
     trackings => trackings[type],
   )
 );
 
-export const refreshRequestActiveSelector = type => (
+export const isActiveRequestSelector = type => (
   createSelector(
-    requestActiveSelector(type),
-    request => !!(request && request.isRefresh),
+    requestTrackingSelector(type),
+    tracking => !!tracking,
+  )
+);
+
+export const isActiveRefreshRequestSelector = type => (
+  createSelector(
+    requestTrackingSelector(type),
+    tracking => !!(tracking && tracking.isRefresh),
   )
 );
 
@@ -21,12 +28,12 @@ export const fetchedDataSelector = key => (
   state => state.fetches[key]
 );
 
-export const backgroundRequestActiveWithNoFetchDataSelector = (requestType, fetchKey) => (
+export const isActiveBackgroundRequestWithNoFetchedDataSelector = (requestType, fetchKey) => (
   createSelector(
-    requestActiveSelector(requestType),
+    requestTrackingSelector(requestType),
     fetchedDataSelector(fetchKey),
-    (request, data) => (
-      (request && !data) ? !request.isRefresh : false
+    (tracking, data) => (
+      (tracking && !data) ? !tracking.isRefresh : false
     ),
   )
 );

@@ -16,7 +16,8 @@
     "no-use-before-define": 0,
     "global-require": 0,
     "react/sort-comp": 0,
-    "no-console": 0
+    "no-console": 0,
+    "import/prefer-default-export": 0
   },
   "env": {
     "browser": true

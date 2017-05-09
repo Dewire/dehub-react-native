@@ -5,13 +5,15 @@ import appEpic from './app_epic';
 import loginEpic from '../screens/login/login_epic';
 import gistsEpic from '../screens/gists/gists_epic';
 import viewGistEpic from '../screens/view_gist/view_gist_epic';
+import newGistEpic from '../screens/new_gist/new_gist_epic';
 import app from './app_reducer';
 import fetches from './fetches_reducer';
 import login from '../screens/login/login_reducer';
 import gists from '../screens/gists/gists_reducer';
 import viewGist from '../screens/view_gist/view_gist_reducer';
+import newGist from '../screens/new_gist/new_gist_reducer';
 import api from '../network/api';
-import isIOS from '../util/platform';
+import { isIOS } from '../util/platform';
 import { LOGOUT } from './actions';
 
 export const rootEpic = combineEpics(
@@ -19,6 +21,7 @@ export const rootEpic = combineEpics(
   loginEpic,
   gistsEpic,
   viewGistEpic,
+  newGistEpic,
 );
 
 const reducer = combineReducers({
@@ -27,6 +30,7 @@ const reducer = combineReducers({
   fetches,
   viewGist,
   gists,
+  newGist,
 });
 
 export const rootReducer = (state, action) => {

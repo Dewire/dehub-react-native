@@ -1,5 +1,5 @@
 
-import { track, error } from '../../observables/observables';
+import { trackAndCatch } from '../../observables/observables';
 import { VIEW_GIST_FETCH_DATA, VIEW_GIST_SET_STATE } from './view_gist_actions';
 
 export default (action$, store, { api }) => (
@@ -11,7 +11,6 @@ export default (action$, store, { api }) => (
           type: VIEW_GIST_SET_STATE,
           payload: { rawUrl, text: data.response },
         }))
-        .let(error())
-        .let(track(action.type));
+        .let(trackAndCatch(action.type));
     })
 );
