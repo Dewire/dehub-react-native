@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import appConnect from '../containers';
 
 import { NEW_GIST_CREATE_GIST, createGist, setState } from './new_gist_actions';
 import { hasCompletedRequestWithoutError } from '../../util/store';
@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch => ({
   onCreateGistTapped: () => dispatch(createGist()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewGistComponent);
+export default appConnect(mapStateToProps, mapDispatchToProps)(NewGistComponent);

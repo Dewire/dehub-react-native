@@ -1,5 +1,5 @@
 
-import { connect } from 'react-redux';
+import appConnect from '../containers';
 import GistsComponent from './gists_component';
 import { logout } from '../../base/actions';
 import { sectionsSelector } from './gists_selectors';
@@ -31,4 +31,4 @@ const mapDispatchToProps = dispatch => ({
   onNewGistTapped: navigator => dispatch(navigateToNewGist({ navigator, title: 'New Gist' })),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(GistsComponent);
+export default appConnect(mapStateToProps, mapDispatchToProps)(GistsComponent);

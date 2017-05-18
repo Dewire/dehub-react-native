@@ -47,6 +47,6 @@ ContainerView.propTypes = {
   style: View.propTypes.style,
   children: PropTypes.node,
   showLoading: PropTypes.bool,
-  error: PropTypes.error,
+  error: PropTypes.instanceOf(Error),
   testID: PropTypes.string,
 };

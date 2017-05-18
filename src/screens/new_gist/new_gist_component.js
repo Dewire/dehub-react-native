@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Toast from 'react-native-easy-toast';
 
 import AppTextInput from '../../app_components/app_text_input';
-import ContainerView from '../../app_components/container';
+import ContainerView from '../../app_components/container_view';
 import * as globalStyles from '../../styles/global';
 
 const EVENT_CREATE_GIST = 'EVENT_CREATE_GIST';

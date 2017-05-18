@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ContainerView from '../../app_components/container';
+import ContainerView from '../../app_components/container_view';
 import SeparatorLine from '../../app_components/separator_line';
 import SectionHeader from '../../app_components/section_header';
 import { ListViewChevronRightIcon } from '../../app_components/icons';

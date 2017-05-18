@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import * as globalStyles from '../../styles/global';
-import ContainerView from '../../app_components/container';
+import ContainerView from '../../app_components/container_view';
 import { isIOS } from '../../util/platform';
 
 export default class ViewGistComponent extends Component {

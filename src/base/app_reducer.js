@@ -5,6 +5,7 @@ import {
   CLEAR_COMPLETED_REQUEST,
   CLEAR_REQUEST_ERROR,
 } from './actions';
+import { falsyToNull } from '../util/utils';
 
 const defaultState = {
   // Keeps track of the requests that are currently in progress. When a request of a given
@@ -73,6 +74,6 @@ function completedValue(error, clear) {
 function setError(state, error) {
   return {
     ...state,
-    requestError: error,
+    requestError: falsyToNull(error),
   };
 }

@@ -8,7 +8,7 @@ import {
 import * as globalStyles from '../../styles/global';
 import AppTextInput from '../../app_components/app_text_input';
 import SpinnerReplacer from '../../app_components/spinner_replacer';
-import ContainerView from '../../app_components/container';
+import ContainerView from '../../app_components/container_view';
 import { isIOS } from '../../util/platform';
 
 export default class LoginComponent extends Component {
