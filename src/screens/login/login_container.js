@@ -1,6 +1,4 @@
-
-import { connect } from 'react-redux';
-import LoginComponent from './login_component';
+import appConnect from '../containers';
 import { login, setState, navigateToGists } from './login_actions';
 import {
   usernameSelector,
@@ -9,6 +7,7 @@ import {
   isLoginButtonEnabledSelector,
   isLoginSpinnerActiveSelector,
 } from './login_selectors';
+import LoginComponent from './login_component';
 
 const mapStateToProps = state => ({
   username: usernameSelector(state),
@@ -25,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
   navigateToGists: loginState => dispatch(navigateToGists(loginState)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent);
+export default appConnect(mapStateToProps, mapDispatchToProps)(LoginComponent);

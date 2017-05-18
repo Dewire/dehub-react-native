@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Toast from 'react-native-easy-toast';
 
 import AppTextInput from '../../app_components/app_text_input';
-import Container from '../../app_components/container';
+import ContainerView from '../../app_components/container';
 import * as globalStyles from '../../styles/global';
 
 const EVENT_CREATE_GIST = 'EVENT_CREATE_GIST';
@@ -45,7 +45,7 @@ export default class NewGistComponent extends Component {
 
   render() {
     return (
-      <Container style={styles.mainContainer}>
+      <ContainerView style={styles.mainContainer}>
         <View style={styles.headerContainer}>
           <AppTextInput
             containerFlex={1}
@@ -71,7 +71,7 @@ export default class NewGistComponent extends Component {
           onChangeText={this.props.onContentChangeText}
         />
         <Toast ref={(toast) => { this.toast = toast; }} />
-      </Container>
+      </ContainerView>
     );
   }
 }

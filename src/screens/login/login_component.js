@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import {
-  View,
   Image,
   StyleSheet,
   Button,
@@ -9,6 +8,7 @@ import {
 import * as globalStyles from '../../styles/global';
 import AppTextInput from '../../app_components/app_text_input';
 import SpinnerReplacer from '../../app_components/spinner_replacer';
+import ContainerView from '../../app_components/container';
 import { isIOS } from '../../util/platform';
 
 export default class LoginComponent extends Component {
@@ -31,7 +31,7 @@ export default class LoginComponent extends Component {
 
   render() {
     return (
-      <View style={[globalStyles.COMMON_STYLES.container, styles.mainContainer]}>
+      <ContainerView {...this.props} style={styles.mainContainer}>
         <Image
           source={require('../../../assets/images/logo.png')}
           style={{ marginTop: 75, marginBottom: 50 }}
@@ -64,7 +64,7 @@ export default class LoginComponent extends Component {
             testID="loginButton"
           />
         </SpinnerReplacer>
-      </View>
+      </ContainerView>
     );
   }
 }

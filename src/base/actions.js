@@ -6,6 +6,7 @@ export const FETCH_COMPLETE = 'FETCH_COMPLETE';
 export const FETCH_COMPLETE_ADD_ITEM = 'FETCH_COMPLETE_ADD_ITEM';
 export const FETCH_GISTS = 'FETCH_GISTS';
 export const CLEAR_COMPLETED_REQUEST = 'CLEAR_COMPLETED_REQUEST';
+export const CLEAR_REQUEST_ERROR = 'CLEAR_REQUEST_ERROR';
 
 export const nop = () => ({
   type: 'NOP',
@@ -31,4 +32,8 @@ export const fetchCompleteAddItem = (key, data, prepend = false) => ({
 export const clearCompletedRequest = actionType => ({
   type: CLEAR_COMPLETED_REQUEST,
   payload: { actionType },
+});
+
+export const clearRequestError = () => ({
+  type: CLEAR_REQUEST_ERROR,
 });

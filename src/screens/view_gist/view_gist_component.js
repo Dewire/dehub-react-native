@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import * as globalStyles from '../../styles/global';
-import Container from '../../app_components/container';
+import ContainerView from '../../app_components/container';
 import { isIOS } from '../../util/platform';
 
 export default class ViewGistComponent extends Component {
@@ -18,7 +18,7 @@ export default class ViewGistComponent extends Component {
 
   render() {
     return (
-      <Container showLoading={this.props.showLoading}>
+      <ContainerView {...this.props}>
         <ScrollView>
           <ScrollView horizontal>
             <Text style={styles.text}>
@@ -26,7 +26,7 @@ export default class ViewGistComponent extends Component {
             </Text>
           </ScrollView>
         </ScrollView>
-      </Container>
+      </ContainerView>
     );
   }
 }
