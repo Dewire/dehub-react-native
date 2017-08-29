@@ -5,12 +5,11 @@ import {
   StyleSheet,
   View,
   ActivityIndicator,
- } from 'react-native';
+} from 'react-native';
 import Toast from 'react-native-easy-toast';
 import * as globalStyles from '../styles/global';
 
 export default class ContainerView extends Component {
-
   componentWillReceiveProps({ error }) {
     if (error) {
       this.errorToast.show(error.message || 'Error occurred');

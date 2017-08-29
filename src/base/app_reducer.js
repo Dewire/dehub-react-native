@@ -24,7 +24,6 @@ const defaultState = {
 
 export default (state = defaultState, action = {}) => {
   switch (action.type) {
-
     case TRACK_REQUEST_ACTIVE:
       return setTracking(state, action.payload, true);
 

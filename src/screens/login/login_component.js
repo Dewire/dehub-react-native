@@ -12,7 +12,6 @@ import ContainerView from '../../app_components/container_view';
 import { isIOS } from '../../util/platform';
 
 export default class LoginComponent extends Component {
-
   constructor(props) {
     super(props);
     props.navigator.toggleNavBar({

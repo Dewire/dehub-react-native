@@ -13,10 +13,10 @@ export const sectionsSelector = createSelector(
       acc[pos].data.push(decorateGist(gist));
       return acc;
     },
-      [
-        { key: 'PUBLIC', data: [] },
-        { key: 'PRIVATE', data: [] },
-      ],
+    [
+      { key: 'PUBLIC', data: [] },
+      { key: 'PRIVATE', data: [] },
+    ],
     )
   ),
 );

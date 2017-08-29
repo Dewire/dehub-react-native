@@ -19,7 +19,6 @@ const EVENT_LOGOUT = 'logout';
 const EVENT_NEW_GIST = 'new_gist';
 
 export default class GistsComponent extends Component {
-
   constructor(props) {
     super(props);
     this.props.fetchData();

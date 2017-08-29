@@ -10,7 +10,6 @@ import ContainerView from '../../app_components/container_view';
 import { isIOS } from '../../util/platform';
 
 export default class ViewGistComponent extends Component {
-
   constructor(props) {
     super(props);
     props.fetchData(props.gist);

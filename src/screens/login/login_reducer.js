@@ -1,5 +1,4 @@
 /* eslint immutable/no-mutation: 2 */
-import { LOGOUT } from '../../base/actions';
 import { LOGIN_SET_STATE } from './login_actions';
 
 const defaultState = {

@@ -5,7 +5,7 @@ import {
   GISTS_FETCH_DATA,
   GISTS_NAVIGATE_TO_VIEW_GIST,
   GISTS_NAVIGATE_TO_NEW_GIST,
- } from './gists_actions';
+} from './gists_actions';
 import { VIEW_GIST_SCREEN, NEW_GIST_SCREEN } from '../screenIdentifiers';
 import { trackAndCatch, navigate } from '../../observables/observables';
 

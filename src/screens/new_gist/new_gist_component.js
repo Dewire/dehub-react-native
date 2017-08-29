@@ -9,7 +9,6 @@ import * as globalStyles from '../../styles/global';
 const EVENT_CREATE_GIST = 'EVENT_CREATE_GIST';
 
 export default class NewGistComponent extends Component {
-
   constructor(props) {
     super(props);
     this.onNavigatorEvent = this.onNavigatorEvent.bind(this);

@@ -4,8 +4,7 @@ import {
   nop,
   TRACK_REQUEST_ACTIVE,
   TRACK_REQUEST_INACTIVE,
-}
-from '../base/actions';
+} from '../base/actions';
 
 /**
  * trackAndCatch - Wraps a network request observable to provide tracking and error handling.
